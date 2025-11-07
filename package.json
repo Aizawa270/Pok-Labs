@@ -1,0 +1,23 @@
+{
+  "name": "pokemon-rpg-bot",
+  "version": "1.0.0",
+  "description": "Ultimate Pokémon RPG bot (Gen1-4) - full implementation staged",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --enable-source-maps src/index.js"
+  },
+  "engines": {
+    "node": ">=16.9.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.4.0",
+    "better-sqlite3": "^8.2.0",
+    "canvas": "^2.11.0",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0",
+    "sharp": "^0.32.1"
+  }
+}
