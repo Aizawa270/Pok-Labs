@@ -1,0 +1,37 @@
+[
+  {"name":"Pewter Gym","region":"Kanto","badge_name":"Boulder Badge","leader_sprite":"pewter_leader.png","badge_sprite":"boulder_badge.png","min_level":10},
+  {"name":"Cerulean Gym","region":"Kanto","badge_name":"Cascade Badge","leader_sprite":"cerulean_leader.png","badge_sprite":"cascade_badge.png","min_level":15},
+  {"name":"Vermilion Gym","region":"Kanto","badge_name":"Thunder Badge","leader_sprite":"vermillion_leader.png","badge_sprite":"thunder_badge.png","min_level":20},
+  {"name":"Celadon Gym","region":"Kanto","badge_name":"Rainbow Badge","leader_sprite":"celadon_leader.png","badge_sprite":"rainbow_badge.png","min_level":25},
+  {"name":"Fuchsia Gym","region":"Kanto","badge_name":"Soul Badge","leader_sprite":"fuchsia_leader.png","badge_sprite":"soul_badge.png","min_level":30},
+  {"name":"Saffron Gym","region":"Kanto","badge_name":"Marsh Badge","leader_sprite":"saffron_leader.png","badge_sprite":"marsh_badge.png","min_level":35},
+  {"name":"Cinnabar Gym","region":"Kanto","badge_name":"Volcano Badge","leader_sprite":"cinnabar_leader.png","badge_sprite":"volcano_badge.png","min_level":40},
+  {"name":"Viridian Gym","region":"Kanto","badge_name":"Earth Badge","leader_sprite":"viridian_leader.png","badge_sprite":"earth_badge.png","min_level":45},
+
+  {"name":"Violet Gym","region":"Johto","badge_name":"Zephyr Badge","leader_sprite":"violet_leader.png","badge_sprite":"zephyr_badge.png","min_level":10},
+  {"name":"Azalea Gym","region":"Johto","badge_name":"Hive Badge","leader_sprite":"azalea_leader.png","badge_sprite":"hive_badge.png","min_level":15},
+  {"name":"Goldenrod Gym","region":"Johto","badge_name":"Plain Badge","leader_sprite":"goldenrod_leader.png","badge_sprite":"plain_badge.png","min_level":20},
+  {"name":"Ecruteak Gym","region":"Johto","badge_name":"Fog Badge","leader_sprite":"ecruteak_leader.png","badge_sprite":"fog_badge.png","min_level":25},
+  {"name":"Cianwood Gym","region":"Johto","badge_name":"Storm Badge","leader_sprite":"cianwood_leader.png","badge_sprite":"storm_badge.png","min_level":30},
+  {"name":"Olivine Gym","region":"Johto","badge_name":"Mineral Badge","leader_sprite":"olivine_leader.png","badge_sprite":"mineral_badge.png","min_level":35},
+  {"name":"Mahogany Gym","region":"Johto","badge_name":"Glacier Badge","leader_sprite":"mahogany_leader.png","badge_sprite":"glacier_badge.png","min_level":40},
+  {"name":"Blackthorn Gym","region":"Johto","badge_name":"Rising Badge","leader_sprite":"blackthorn_leader.png","badge_sprite":"rising_badge.png","min_level":45},
+
+  {"name":"Rustboro Gym","region":"Hoenn","badge_name":"Stone Badge","leader_sprite":"rustboro_leader.png","badge_sprite":"stone_badge.png","min_level":10},
+  {"name":"Dewford Gym","region":"Hoenn","badge_name":"Knuckle Badge","leader_sprite":"dewford_leader.png","badge_sprite":"knuckle_badge.png","min_level":15},
+  {"name":"Mauville Gym","region":"Hoenn","badge_name":"Dynamo Badge","leader_sprite":"mauville_leader.png","badge_sprite":"dynamo_badge.png","min_level":20},
+  {"name":"Lavaridge Gym","region":"Hoenn","badge_name":"Heat Badge","leader_sprite":"lavaridge_leader.png","badge_sprite":"heat_badge.png","min_level":25},
+  {"name":"Petalburg Gym","region":"Hoenn","badge_name":"Balance Badge","leader_sprite":"petalburg_leader.png","badge_sprite":"balance_badge.png","min_level":30},
+  {"name":"Fortree Gym","region":"Hoenn","badge_name":"Feather Badge","leader_sprite":"fortree_leader.png","badge_sprite":"feather_badge.png","min_level":35},
+  {"name":"Mossdeep Gym","region":"Hoenn","badge_name":"Mind Badge","leader_sprite":"mossdeep_leader.png","badge_sprite":"mind_badge.png","min_level":40},
+  {"name":"Sootopolis Gym","region":"Hoenn","badge_name":"Rain Badge","leader_sprite":"sootopolis_leader.png","badge_sprite":"rain_badge.png","min_level":45},
+
+  {"name":"Oreburgh Gym","region":"Sinnoh","badge_name":"Coal Badge","leader_sprite":"oreburgh_leader.png","badge_sprite":"coal_badge.png","min_level":10},
+  {"name":"Eterna Gym","region":"Sinnoh","badge_name":"Forest Badge","leader_sprite":"eterna_leader.png","badge_sprite":"forest_badge.png","min_level":15},
+  {"name":"Veilstone Gym","region":"Sinnoh","badge_name":"Cobble Badge","leader_sprite":"veilstone_leader.png","badge_sprite":"cobble_badge.png","min_level":20},
+  {"name":"Hearthome Gym","region":"Sinnoh","badge_name":"Fen Badge","leader_sprite":"hearthome_leader.png","badge_sprite":"fen_badge.png","min_level":25},
+  {"name":"Canalave Gym","region":"Sinnoh","badge_name":"Relic Badge","leader_sprite":"canalave_leader.png","badge_sprite":"relic_badge.png","min_level":30},
+  {"name":"Snowpoint Gym","region":"Sinnoh","badge_name":"Mineral Badge","leader_sprite":"snowpoint_leader.png","badge_sprite":"mineral_badge.png","min_level":35},
+  {"name":"Sunyshore Gym","region":"Sinnoh","badge_name":"Beacon Badge","leader_sprite":"sunyshore_leader.png","badge_sprite":"beacon_badge.png","min_level":40},
+  {"name":"Mt. Coronet Gym","region":"Sinnoh","badge_name":"Legend Badge","leader_sprite":"mtcoronet_leader.png","badge_sprite":"legend_badge.png","min_level":45}
+]
