@@ -1,0 +1,29 @@
+{
+  "Kanto": {
+    "1": [{"pokemon_id":1,"chance":0.5},{"pokemon_id":2,"chance":0.3},{"pokemon_id":4,"chance":0.2}],
+    "2": [{"pokemon_id":1,"chance":0.4},{"pokemon_id":2,"chance":0.4},{"pokemon_id":4,"chance":0.2}],
+    "3": [{"pokemon_id":7,"chance":0.5},{"pokemon_id":10,"chance":0.5}],
+    "4": [{"pokemon_id":16,"chance":0.5},{"pokemon_id":19,"chance":0.5}],
+    "5": [{"pokemon_id":21,"chance":0.4},{"pokemon_id":23,"chance":0.6}],
+    "6": [{"pokemon_id":25,"chance":0.3},{"pokemon_id":27,"chance":0.7}],
+    "7": [{"pokemon_id":29,"chance":0.5},{"pokemon_id":32,"chance":0.5}],
+    "8": [{"pokemon_id":33,"chance":0.6},{"pokemon_id":35,"chance":0.4}],
+    "9": [{"pokemon_id":37,"chance":0.5},{"pokemon_id":39,"chance":0.5}],
+    "10":[{"pokemon_id":41,"chance":0.5},{"pokemon_id":43,"chance":0.5}],
+    "11":[{"pokemon_id":46,"chance":0.5},{"pokemon_id":48,"chance":0.5}],
+    "12":[{"pokemon_id":50,"chance":0.5},{"pokemon_id":52,"chance":0.5}],
+    "13":[{"pokemon_id":54,"chance":0.5},{"pokemon_id":56,"chance":0.5}],
+    "14":[{"pokemon_id":58,"chance":0.5},{"pokemon_id":60,"chance":0.5}],
+    "15":[{"pokemon_id":63,"chance":0.5},{"pokemon_id":66,"chance":0.5}],
+    "16":[{"pokemon_id":69,"chance":0.5},{"pokemon_id":72,"chance":0.5}],
+    "17":[{"pokemon_id":74,"chance":0.5},{"pokemon_id":77,"chance":0.5}],
+    "18":[{"pokemon_id":79,"chance":0.5},{"pokemon_id":81,"chance":0.5}],
+    "19":[{"pokemon_id":84,"chance":0.5},{"pokemon_id":87,"chance":0.5}],
+    "20":[{"pokemon_id":90,"chance":0.5},{"pokemon_id":93,"chance":0.5}],
+    "21":[{"pokemon_id":96,"chance":0.5},{"pokemon_id":99,"chance":0.5}],
+    "22":[{"pokemon_id":102,"chance":0.5},{"pokemon_id":105,"chance":0.5}],
+    "23":[{"pokemon_id":108,"chance":0.5},{"pokemon_id":111,"chance":0.5}],
+    "24":[{"pokemon_id":114,"chance":0.5},{"pokemon_id":117,"chance":0.5}],
+    "25":[{"pokemon_id":120,"chance":0.5},{"pokemon_id":123,"chance":0.5}]
+  }
+}
