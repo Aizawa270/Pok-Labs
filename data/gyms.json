@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Pewter Gym",
+    "region": "Kanto",
+    "badge_name": "Boulder Badge",
+    "leader_sprite": "pewter_leader.png",
+    "badge_sprite": "boulder_badge.png",
+    "min_level": 10
+  },
+  {
+    "name": "Cerulean Gym",
+    "region": "Kanto",
+    "badge_name": "Cascade Badge",
+    "leader_sprite": "cerulean_leader.png",
+    "badge_sprite": "cascade_badge.png",
+    "min_level": 15
+  },
+  {
+    "name": "Vermilion Gym",
+    "region": "Kanto",
+    "badge_name": "Thunder Badge",
+    "leader_sprite": "vermillion_leader.png",
+    "badge_sprite": "thunder_badge.png",
+    "min_level": 20
+  },
+  {
+    "name": "Celadon Gym",
+    "region": "Kanto",
+    "badge_name": "Rainbow Badge",
+    "leader_sprite": "celadon_leader.png",
+    "badge_sprite": "rainbow_badge.png",
+    "min_level": 25
+  }
+]
