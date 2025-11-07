@@ -11,8 +11,12 @@ function ensureDbDir() {
 
 function init() {
   ensureDbDir();
+
   const db = new Database(DB_PATH);
-  // users: basic profile and currency
+
+  // --- Stage 1 tables ---
+
+  // users
   db.prepare(`
     CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY,
@@ -22,7 +26,7 @@ function init() {
     );
   `).run();
 
-  // pokemon_instances: each captured pokemon
+  // pokemon_instances
   db.prepare(`
     CREATE TABLE IF NOT EXISTS pokemon_instances (
       id TEXT PRIMARY KEY,
@@ -44,7 +48,7 @@ function init() {
     );
   `).run();
 
-  // boxes: box metadata (optional)
+  // boxes
   db.prepare(`
     CREATE TABLE IF NOT EXISTS boxes (
       owner_id TEXT,
@@ -54,7 +58,7 @@ function init() {
     );
   `).run();
 
-  // market listings
+  // market_listings
   db.prepare(`
     CREATE TABLE IF NOT EXISTS market_listings (
       id TEXT PRIMARY KEY,
@@ -73,6 +77,59 @@ function init() {
       host_id TEXT,
       created_at INTEGER,
       max_players INTEGER DEFAULT 5
+    );
+  `).run();
+
+  // --- Stage 2 tables ---
+
+  // user_routes: tracks which routes are unlocked per user per region
+  db.prepare(`
+    CREATE TABLE IF NOT EXISTS user_routes (
+      user_id TEXT,
+      region TEXT,
+      route_number INTEGER,
+      PRIMARY KEY(user_id, region, route_number)
+    );
+  `).run();
+
+  // gyms: static info about gym leaders and badges
+  db.prepare(`
+    CREATE TABLE IF NOT EXISTS gyms (
+      name TEXT PRIMARY KEY,
+      region TEXT,
+      badge_name TEXT,
+      leader_sprite TEXT,
+      badge_sprite TEXT,
+      min_level INTEGER
+    );
+  `).run();
+
+  // user_badges: badges earned by user
+  db.prepare(`
+    CREATE TABLE IF NOT EXISTS user_badges (
+      user_id TEXT,
+      gym_name TEXT,
+      earned_at INTEGER,
+      PRIMARY KEY(user_id, gym_name)
+    );
+  `).run();
+
+  // regions: static region info
+  db.prepare(`
+    CREATE TABLE IF NOT EXISTS regions (
+      name TEXT PRIMARY KEY,
+      start_route INTEGER,
+      end_route INTEGER
+    );
+  `).run();
+
+  // route_spawns: Pokémon spawn table per route & region
+  db.prepare(`
+    CREATE TABLE IF NOT EXISTS route_spawns (
+      route INTEGER,
+      region TEXT,
+      pokemon_id INTEGER,
+      chance REAL
     );
   `).run();
 
