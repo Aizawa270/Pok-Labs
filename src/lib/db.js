@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
 
-const DB_PATH = process.env.DATABASE_PATH || path.join(__dirname, '..', '..', 'db', 'db.sqlite');
+const DB_PATH = process.env.DATABASE_PATH || path.join(__dirname, '..', 'db', 'db.sqlite');
 
 function ensureDbDir() {
   const dir = path.dirname(DB_PATH);
@@ -16,7 +16,7 @@ function init() {
 
   // --- Stage 1 tables ---
 
-  // users
+  // users table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY,
@@ -26,7 +26,7 @@ function init() {
     );
   `).run();
 
-  // pokemon_instances
+  // pokemon_instances table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS pokemon_instances (
       id TEXT PRIMARY KEY,
@@ -48,41 +48,7 @@ function init() {
     );
   `).run();
 
-  // boxes
-  db.prepare(`
-    CREATE TABLE IF NOT EXISTS boxes (
-      owner_id TEXT,
-      box_number INTEGER,
-      capacity INTEGER DEFAULT 30,
-      PRIMARY KEY(owner_id, box_number)
-    );
-  `).run();
-
-  // market_listings
-  db.prepare(`
-    CREATE TABLE IF NOT EXISTS market_listings (
-      id TEXT PRIMARY KEY,
-      seller_id TEXT,
-      pokemon_id TEXT,
-      price_beli INTEGER,
-      active INTEGER DEFAULT 1
-    );
-  `).run();
-
-  // raids
-  db.prepare(`
-    CREATE TABLE IF NOT EXISTS raids (
-      id TEXT PRIMARY KEY,
-      species_id INTEGER,
-      host_id TEXT,
-      created_at INTEGER,
-      max_players INTEGER DEFAULT 5
-    );
-  `).run();
-
-  // --- Stage 2 tables ---
-
-  // user_routes: tracks which routes are unlocked per user per region
+  // user_routes table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS user_routes (
       user_id TEXT,
@@ -92,7 +58,7 @@ function init() {
     );
   `).run();
 
-  // gyms: static info about gym leaders and badges
+  // gyms table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS gyms (
       name TEXT PRIMARY KEY,
@@ -104,7 +70,7 @@ function init() {
     );
   `).run();
 
-  // user_badges: badges earned by user
+  // user_badges table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS user_badges (
       user_id TEXT,
@@ -114,7 +80,7 @@ function init() {
     );
   `).run();
 
-  // regions: static region info
+  // regions table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS regions (
       name TEXT PRIMARY KEY,
@@ -123,7 +89,7 @@ function init() {
     );
   `).run();
 
-  // route_spawns: Pokémon spawn table per route & region
+  // route_spawns table
   db.prepare(`
     CREATE TABLE IF NOT EXISTS route_spawns (
       route INTEGER,
