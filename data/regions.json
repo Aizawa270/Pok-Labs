@@ -1,0 +1,11 @@
+[
+  { "name": "Kanto", "start_route": 1, "end_route": 25 },
+  { "name": "Johto", "start_route": 1, "end_route": 25 },
+  { "name": "Hoenn", "start_route": 1, "end_route": 25 },
+  { "name": "Sinnoh", "start_route": 1, "end_route": 25 }
+][
+  { "name": "Kanto", "start_route": 1, "end_route": 25 },
+  { "name": "Johto", "start_route": 1, "end_route": 25 },
+  { "name": "Hoenn", "start_route": 1, "end_route": 25 },
+  { "name": "Sinnoh", "start_route": 1, "end_route": 25 }
+]
