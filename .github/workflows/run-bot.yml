@@ -1,4 +1,4 @@
-name: Run Discord Bot (temporary)
+name: Run Discord Bot (Stage 1)
 
 on:
   push:
@@ -10,15 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # Install system dependencies for canvas/sharp
+      # 3. Install system dependencies for canvas/sharp
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -33,11 +35,11 @@ jobs:
             pkg-config \
             python3
 
-      # Install Node.js dependencies (use install, not ci)
+      # 4. Install Node.js dependencies
       - name: Install Node.js dependencies
         run: npm install
 
-      # Start bot
+      # 5. Start bot
       - name: Start bot
         run: |
           while true; do
@@ -46,4 +48,7 @@ jobs:
             sleep 5
           done
         env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          DISCORD_TOKEN: ${{ secrets.BOT_TOKEN }}
+          ADMIN_IDS: ${{ secrets.ADMIN_IDS }}
+          BOT_PREFIX: "%"
+          SHINY_RATE: 4096
