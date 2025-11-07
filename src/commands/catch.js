@@ -1,0 +1,50 @@
+// src/commands/catch.js
+const { v4: uuidv4 } = require('uuid');
+
+module.exports = {
+  name: 'catch',
+  description: 'Catch the current encounter: %catch',
+  async execute({ client, message }) {
+    const userId = message.author.id;
+    if (!client.currentEncounter || !client.currentEncounter[userId]) {
+      return message.reply('No active wild encounter.');
+    }
+
+    const enc = client.currentEncounter[userId];
+    const baseChance = 0.6;
+    const caught = Math.random() < baseChance;
+
+    if (!caught) {
+      delete client.currentEncounter[userId];
+      return message.reply('The Pokémon broke free and ran away.');
+    }
+
+    // Determine next free team slot
+    const teamSlots = client.db
+      .prepare(`SELECT team_slot FROM pokemon_instances WHERE owner_id = ? AND team_slot IS NOT NULL ORDER BY team_slot`)
+      .all(userId)
+      .map(r => r.team_slot);
+    let slot = 1;
+    while (teamSlots.includes(slot) && slot <= 6) slot++;
+    const teamSlot = slot <= 6 ? slot : null;
+
+    // Insert into database
+    const id = uuidv4();
+    client.db
+      .prepare(
+        `INSERT INTO pokemon_instances (id, owner_id, species_id, level, hp_current, team_slot) VALUES (?, ?, ?, ?, ?, ?)`
+      )
+      .run(id, userId, enc.species_id, enc.level, enc.hp_current, teamSlot);
+
+    delete client.currentEncounter[userId];
+
+    // Get species info
+    const pokedex = client.pokedex || {};
+    const species = pokedex[enc.species_id] || Object.values(pokedex).find(p => p.id === enc.species_id);
+    const name = species ? species.name : `#${enc.species_id}`;
+
+    message.reply(
+      `You caught ${name}${teamSlot ? ` and placed it in team slot ${teamSlot}` : ' — it was sent to your box'}.`
+    );
+  },
+};
