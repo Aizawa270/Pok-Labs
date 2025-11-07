@@ -48,7 +48,7 @@ jobs:
             sleep 5
           done
         env:
-          DISCORD_TOKEN: ${{ secrets.BOT_TOKEN }}
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           ADMIN_IDS: ${{ secrets.ADMIN_IDS }}
           BOT_PREFIX: "%"
           SHINY_RATE: 4096
