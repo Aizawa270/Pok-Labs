@@ -14,7 +14,6 @@ function init() {
   ensureDbDir();
   const db = new Database(DB_PATH);
 
-  // --- Users ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY,
@@ -25,7 +24,6 @@ function init() {
     );
   `).run();
 
-  // --- Pokémon instances ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS pokemon_instances (
       id TEXT PRIMARY KEY,
@@ -47,7 +45,6 @@ function init() {
     );
   `).run();
 
-  // --- Boxes (for bag command) ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS boxes (
       owner_id TEXT,
@@ -57,7 +54,6 @@ function init() {
     );
   `).run();
 
-  // --- User routes ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS user_routes (
       user_id TEXT,
@@ -67,7 +63,6 @@ function init() {
     );
   `).run();
 
-  // --- Gyms ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS gyms (
       name TEXT PRIMARY KEY,
@@ -79,7 +74,6 @@ function init() {
     );
   `).run();
 
-  // --- User badges ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS user_badges (
       user_id TEXT,
@@ -89,7 +83,6 @@ function init() {
     );
   `).run();
 
-  // --- Regions ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS regions (
       name TEXT PRIMARY KEY,
@@ -98,7 +91,6 @@ function init() {
     );
   `).run();
 
-  // --- Route spawns ---
   db.prepare(`
     CREATE TABLE IF NOT EXISTS route_spawns (
       route INTEGER,
@@ -111,18 +103,11 @@ function init() {
   return db;
 }
 
-/**
- * Ensure a user exists in DB and has first route unlocked
- */
 function ensureUserExists(db, userId) {
   db.prepare(`INSERT OR IGNORE INTO users (id) VALUES (?)`).run(userId);
-
   const row = db.prepare(`SELECT current_region FROM users WHERE id = ?`).get(userId);
   const region = (row && row.current_region) ? row.current_region : 'Kanto';
-
   db.prepare(`INSERT OR IGNORE INTO user_routes (user_id, region, route_number) VALUES (?, ?, ?)`).run(userId, region, 1);
-
-  // Ensure first box exists for bag command
   db.prepare(`INSERT OR IGNORE INTO boxes (owner_id, box_number) VALUES (?, ?)`).run(userId, 1);
 }
 
