@@ -1,18 +1,68 @@
+const { v4: uuidv4 } = require('uuid');
+
 module.exports = {
   name: 'encounter',
-  description: 'Show your current wild encounter (if any)',
-  async execute({ client, message }) {
+  description: 'Encounter a wild Pokémon on current route: %encounter [route]',
+  async execute({ client, message, args }) {
+    const routeNum = parseInt(args[0], 10);
+    if (isNaN(routeNum)) return message.reply('Please provide a valid route number.');
+
     const userId = message.author.id;
-    if (!client.currentEncounter || !client.currentEncounter[userId]) return message.reply('No active wild encounter. Use %route <n> to find wild Pokémon.');
-    const enc = client.currentEncounter[userId];
+    const db = client.db;
+
+    // Determine region — default Kanto for now
+    let currentRegion = 'Kanto';
+
+    const routeCheck = db
+      .prepare(
+        `SELECT * FROM user_routes WHERE user_id = ? AND region = ? AND route_number = ?`
+      )
+      .get(userId, currentRegion, routeNum);
+
+    if (!routeCheck) return message.reply(`Route ${routeNum} not unlocked in ${currentRegion}.`);
+
+    // Pick Pokémon for route
+    const routeSpawns = db
+      .prepare(`SELECT * FROM route_spawns WHERE route = ? AND region = ?`)
+      .all(routeNum, currentRegion);
+
+    if (!routeSpawns || routeSpawns.length === 0)
+      return message.reply('No Pokémon found for this route yet.');
+
+    const totalChance = routeSpawns.reduce((a, p) => a + p.chance, 0);
+    let roll = Math.random() * totalChance;
+    let selected = null;
+
+    for (const p of routeSpawns) {
+      if (roll < p.chance) {
+        selected = p;
+        break;
+      }
+      roll -= p.chance;
+    }
+    if (!selected) selected = routeSpawns[0];
+
     const pokedex = client.pokedex || {};
-    const species = Object.values(pokedex).find(p => p.id === enc.species_id) || pokedex[String(enc.species_id)];
-    const embed = {
-      title: `Wild ${species ? species.name : '#'+enc.species_id} • Lv ${enc.level}`,
-      description: `HP: ${enc.hp_current}\nUse %catch to try to catch it.`,
-      thumbnail: { url: species ? (species.sprite || `https://img.pokemondb.net/sprites/sword-shield/icon/${species.name_key}.png`) : undefined },
-      color: 0x88cc00
+    const species = pokedex[selected.pokemon_id];
+    if (!species) return message.reply('Pokémon data missing.');
+
+    if (!client.currentEncounter) client.currentEncounter = {};
+    client.currentEncounter[userId] = {
+      id: uuidv4(),
+      species_id: species.id,
+      level: Math.floor(Math.random() * 5 + 2),
+      hp_current: species.baseStats.hp,
     };
+
+    const embed = {
+      title: `Wild ${species.name} appeared!`,
+      description: `Level ${client.currentEncounter[userId].level}\nType: ${species.types.join(', ')}`,
+      thumbnail: {
+        url: `https://img.pokemondb.net/sprites/sword-shield/icon/${species.name.toLowerCase()}.png`,
+      },
+      color: 0x00ff00,
+    };
+
     message.reply({ embeds: [embed] });
-  }
+  },
 };
