@@ -136,4 +136,18 @@ function init() {
   return db;
 }
 
-module.exports = { init, DB_PATH };
+/**
+ * Ensure a user has first route unlocked by default
+ * Call this whenever a new user interacts with the bot
+ */
+function ensureUserRoutes(db, userId) {
+  const regions = ['Kanto']; // add other regions later
+  for (const region of regions) {
+    db.prepare(`
+      INSERT OR IGNORE INTO user_routes(user_id, region, route_number)
+      VALUES (?, ?, ?)
+    `).run(userId, region, 1); // unlock Route 1
+  }
+}
+
+module.exports = { init, DB_PATH, ensureUserRoutes };
