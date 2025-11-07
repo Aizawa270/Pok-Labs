@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '18'
 
-      # Install all dependencies needed for canvas and sharp
+      # Install system dependencies for canvas/sharp
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -33,9 +33,11 @@ jobs:
             pkg-config \
             python3
 
+      # Install Node.js dependencies (use install, not ci)
       - name: Install Node.js dependencies
-        run: npm ci
+        run: npm install
 
+      # Start bot
       - name: Start bot
         run: |
           while true; do
